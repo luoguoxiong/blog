@@ -8,3 +8,4 @@
   - [建造者模式](design/builder.md '建造者模式')
   - [模板模式](design/template.md '模板模式')
 - [React 无痕埋点实现](track.md 'React无痕埋点实现')
+- [Lerna Github CI发布npm包](lerna.md 'Lerna Github CI发布npm包')
