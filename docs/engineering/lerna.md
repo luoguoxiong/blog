@@ -1,6 +1,6 @@
 # Lerna Github CI  发布npm包
 
-![](./img/lerna.png)
+![](../img/lerna.png)
 
 在折腾微前端落地和组件库方案的时候，用到了Lerna这个包管理工具。本文主要包含以下两个部分：
 

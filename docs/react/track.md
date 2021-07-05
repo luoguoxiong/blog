@@ -1,4 +1,4 @@
-![](./img/coffee.jpg)
+![](../img/coffee.jpg)
 
 # React无痕埋点的实践
 
