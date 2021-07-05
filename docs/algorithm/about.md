@@ -101,8 +101,7 @@ var i = 1;
 
 ```js
 var m = new Array(n)
-for(var i=1; i<=n.length; ++i)
-{
+for(var i=1; i<=n.length; ++i){
    j = i;
    j++;
 }
