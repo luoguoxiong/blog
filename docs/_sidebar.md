@@ -6,7 +6,8 @@
 - 前端工程化
     - [Lerna Github CI发布npm包](engineering/lerna.md 'Lerna Github CI发布npm包')
     - webpack
-        - [关于webpack](engineering/webpack/about.md '关于webpack')
+        - [webpack 打包原理](engineering/webpack/about.md 'webpack 打包原理')
+        - [webpack 打包优化](engineering/webpack/speed.md 'webpack 打包优化')
 - 设计模式
   - [理解设计模式](design/concept.md '理解设计模式')
   - [单例模式](design/singleton.md '单例模式')
