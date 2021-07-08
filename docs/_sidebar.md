@@ -4,10 +4,11 @@
 - React
     - [React 无痕埋点实现](react/track.md 'React无痕埋点实现')
 - 前端工程化
+    - [webpack 打包原理](engineering/webpack/about.md 'webpack 打包原理')
+    - [webpack 插件开发](engineering/webpack/plugin.md 'webpack 插件开发')
+    - [webpack 打包优化](engineering/webpack/speed.md 'webpack 打包优化')
     - [Lerna Github CI发布npm包](engineering/lerna.md 'Lerna Github CI发布npm包')
-    - webpack
-        - [webpack 打包原理](engineering/webpack/about.md 'webpack 打包原理')
-        - [webpack 打包优化](engineering/webpack/speed.md 'webpack 打包优化')
+    - [Lint 代码规范](engineering/lint.md '工程化之代码规范')
 - 设计模式
   - [理解设计模式](design/concept.md '理解设计模式')
   - [单例模式](design/singleton.md '单例模式')
