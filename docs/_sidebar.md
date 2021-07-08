@@ -4,6 +4,7 @@
 - React
     - [React 无痕埋点实现](react/track.md 'React无痕埋点实现')
 - 前端工程化
+    - [vite 实现原理](engineering/vite.md 'webpack 实现原理')
     - [webpack 打包原理](engineering/webpack/about.md 'webpack 打包原理')
     - [webpack 插件开发](engineering/webpack/plugin.md 'webpack 插件开发')
     - [webpack 打包优化](engineering/webpack/speed.md 'webpack 打包优化')
