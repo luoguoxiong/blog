@@ -1,5 +1,3 @@
-![](../img/coffee.jpg)
-
 # React无痕埋点的实践
 
 ## 一、前言
