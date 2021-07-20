@@ -12,6 +12,9 @@
     - [Lerna Github CI发布npm包](engineering/lerna.md 'Lerna Github CI发布npm包')
     - [你了解core-js吗](engineering/corejs.md '你了解core-js吗')
     - [Lint 代码规范](engineering/lint.md '工程化之代码规范')
+- 技术方案
+    - [静态导出页面](case/page-build.md '静态导出页面')
+    - [自动化构建部署](case/auto-build.md '自动化构建部署')
 - 设计模式
     - [理解设计模式](design/concept.md '理解设计模式')
     - [单例模式](design/singleton.md '单例模式')
