@@ -4,7 +4,7 @@
 - React
     - [Hooks 坑位告警](react/hooks.md 'Hooks 坑位告警')
     - [React 无痕埋点实现](react/track.md 'React无痕埋点实现')
-- 前端工程化
+- 前端工程
     - [vite 实现原理](engineering/vite.md 'webpack 实现原理')
     - [webpack 打包原理](engineering/webpack/about.md 'webpack 打包原理')
     - [webpack 插件开发](engineering/webpack/plugin.md 'webpack 插件开发')
@@ -12,6 +12,7 @@
     - [Lerna Github CI发布npm包](engineering/lerna.md 'Lerna Github CI发布npm包')
     - [你了解core-js吗](engineering/corejs.md '你了解core-js吗')
     - [Lint 代码规范](engineering/lint.md '工程化之代码规范')
+    - [package.json 关键字段](engineering/package.md 'package.json关键字段')
 - 技术方案
     - [静态导出页面](case/page-build.md '静态导出页面')
     - [自动化构建部署](case/auto-build.md '自动化构建部署')
