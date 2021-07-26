@@ -13,9 +13,14 @@
     - [你了解core-js吗](engineering/corejs.md '你了解core-js吗')
     - [Lint 代码规范](engineering/lint.md '工程化之代码规范')
     - [package.json 关键字段](engineering/package.md 'package.json关键字段')
+- 微前端
+    - [微前端 JS沙箱隔离](micro/jsSanbox.md '微前端 JS沙箱隔离')
+    - [微前端 CSS隔离](micro/cssSandbox.md '微前端 CSS隔离')
+    - [微前端 清除副作用](micro/effect.md '微前端 清除副作用')
 - 技术方案
     - [静态导出页面](case/page-build.md '静态导出页面')
     - [自动化构建部署](case/auto-build.md '自动化构建部署')
+    - [虚拟化列表](case/diff-list.md '虚拟化列表')
 - 设计模式
     - [理解设计模式](design/concept.md '理解设计模式')
     - [单例模式](design/singleton.md '单例模式')
