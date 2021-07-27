@@ -17,6 +17,7 @@
     - [微前端 JS沙箱隔离](micro/jsSanbox.md '微前端 JS沙箱隔离')
     - [微前端 CSS隔离](micro/cssSandbox.md '微前端 CSS隔离')
     - [微前端 清除副作用](micro/effect.md '微前端 清除副作用')
+    - [微前端 通信方案](micro/globalState.md '微前端 通信方案')
 - 技术方案
     - [静态导出页面](case/page-build.md '静态导出页面')
     - [自动化构建部署](case/auto-build.md '自动化构建部署')
