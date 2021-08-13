@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-- [个人简介](/ '罗国雄个人博客')
+- [目录](/ '目录')
 - React
     - [Remax 实现原理](react/remax.md 'Remax实现原理')
     - [Hooks 坑位告警](react/hooks.md 'Hooks 坑位告警')
