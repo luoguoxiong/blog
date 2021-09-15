@@ -19,6 +19,7 @@
     - [CSRF](safety/csrf.md 'CSRF 跨站请求伪造')
     - [XSS](safety/xss.md 'XSS 跨站脚本攻击')
     - [SQL 注入](safety/sql.md 'SQL 注入')
+    - [DDos](safety/ddos.md 'DDos')
 - 微前端
     - [微前端 JS沙箱隔离](micro/jsSanbox.md '微前端 JS沙箱隔离')
     - [微前端 CSS隔离](micro/cssSandbox.md '微前端 CSS隔离')
