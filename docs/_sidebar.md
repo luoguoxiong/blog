@@ -16,6 +16,8 @@
     - [前端构建工具区别](engineering/build.md '前端构建工具区别')
     - [package.json 关键字段](engineering/package.md 'package.json关键字段')
     - [前端部署](engineering/deloy.md '前端部署')
+- 性能优化
+    - [性能指标](performance/quota.md '性能指标')
 - 模块化
     - [CommonJS](module/common.md 'CommonJS')
     - [AMD](module/amd.md 'AMD')
