@@ -14,7 +14,7 @@ React
 
 性能优化
 
- [性能指标](performance/quota.md '性能指标')
+ [性能指标](performance/quota.md '性能指标')、[指标采集](performance/collect.md '指标采集')
 
 模块化
 
