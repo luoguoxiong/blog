@@ -12,6 +12,11 @@ React
 
 [package.json 关键字段](engineering/package.md 'package.json关键字段')、[前端部署](engineering/deloy.md '前端部署')
 
+Babel
+
+ [关于babel](babel/about.md '关于babel')、[preset](babel/preset.md 'preset')
+
+
 性能优化
 
  [性能指标](performance/quota.md '性能指标')、[指标采集](performance/collect.md '指标采集')

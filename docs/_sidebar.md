@@ -19,6 +19,9 @@
 - 性能优化
     - [性能指标](performance/quota.md '性能指标')
     - [指标采集](performance/collect.md '指标采集')
+- Babel
+    - [关于babel](babel/about.md '关于babel')
+    - [preset](babel/preset.md '统一preset')
 - 模块化
     - [CommonJS](module/common.md 'CommonJS')
     - [AMD](module/amd.md 'AMD')
