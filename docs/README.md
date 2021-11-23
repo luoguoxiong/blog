@@ -39,7 +39,7 @@ Web安全
 
 设计模式
 
- [理解设计模式](design/concept.md '理解设计模式')、 [单例模式](design/singleton.md '单例模式')、[工厂模式](design/factory.md '工厂模式')、 [建造者模式](design/builder.md '建造者模式')、 [模板模式](design/template.md '模板模式')
+ [理解设计模式](design/concept.md '理解设计模式')、 [单例模式](design/singleton.md '单例模式')、[工厂模式](design/factory.md '工厂模式')、 [建造者模式](design/builder.md '建造者模式')、 [模板模式](design/template.md '模板模式')、[观察者与发布订阅模式](design/obverver.md '观察者与发布订阅模式')
 
 算法与数据结构
 

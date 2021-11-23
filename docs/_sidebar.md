@@ -49,6 +49,7 @@
     - [工厂模式](design/factory.md '工厂模式')
     - [建造者模式](design/builder.md '建造者模式')
     - [模板模式](design/template.md '模板模式')
+    - [观察者与发布订阅模式](design/obverver.md '观察者与发布订阅模式')
 - 算法与数据结构
     - [时间和空间复杂度](algorithm/about.md '时间和空间复杂度')
     - [回溯算法](algorithm/backTracking.md '回溯算法')
