@@ -56,6 +56,7 @@
     - [二叉树遍历](algorithm/binaryTree.md '二叉树遍历')
     - [二叉树公共祖先问题](algorithm/binaryTreeAncestor.md '二叉树公共祖先问题')
     - [回溯算法组合问题](algorithm/reback.md '回溯算法组合问题')
+    - [回溯算法排列问题](algorithm/reback02.md '回溯算法排列问题')
 - 计算机网络
     - [UDP网络协议](network/udp.md 'UDP网络协议')
     
