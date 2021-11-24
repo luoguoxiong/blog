@@ -43,7 +43,7 @@ Web安全
 
 算法与数据结构
 
- [时间和空间复杂度](algorithm/about.md '时间和空间复杂度')、 [回溯算法](algorithm/backTracking.md '回溯算法')、[二叉树遍历](algorithm/binaryTree.md '二叉树遍历')
+ [时间和空间复杂度](algorithm/about.md '时间和空间复杂度')、 [回溯算法](algorithm/backTracking.md '回溯算法')、[二叉树遍历](algorithm/binaryTree.md '二叉树遍历')、[回溯算法组合问题](algorithm/reback.md '回溯算法组合问题')
 
 计算机网络
 
