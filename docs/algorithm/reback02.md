@@ -34,7 +34,7 @@ var permute = function(nums) {
 };
 ```
 
-### 一、 有重复数字的数组全排列
+### 二、 有重复数字的数组全排列
 https://leetcode-cn.com/problems/permutations-ii/submissions/
 
 ```shell
