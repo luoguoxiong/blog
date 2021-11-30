@@ -84,7 +84,6 @@ var candy = function(ratings) {
 	// 如果左边比右边评分高，则左边分配糖果比右边大（如果已经大的，则不变，否则+1）！！！比较难理解至少准备多少糖果，最小原则
   for(let i = ratings.length - 2;i >= 0;i--){
     if(ratings[i] > ratings[i + 1]){
-      // 为什么要是max? 因为要保证原数据的大小关系，而且还要保证左边的一定要大于右边的
       swips[i] = Math.max(
         swips[i], swips[i + 1] + 1
       );
