@@ -4,7 +4,7 @@ React
 
 [Remax 实现原理](react/remax.md 'Remax实现原理')、[Hooks 坑位告警](react/hooks.md 'Hooks 坑位告警')、 [React 无痕埋点实现](react/track.md 'React无痕埋点实现')、[React 性能优化](react/performance.md 'React 性能优化')、[React Fiber](react/fiber.md 'React Fiber')
 
-[源码分析-调试篇](react/source01.md '源码分析-调试篇')
+[源码分析-调试篇](react/source01.md '源码分析-调试篇')、[源码分析-React.render](react/source02.md '源码分析-React.render')
 
 
 
