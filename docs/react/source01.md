@@ -27,3 +27,5 @@ npx create-react-app react-code
 
 yarn link react react-dom
 ```
+### 四、打开调试工具Performance面板
+![](../img/react/stack.jpg)
