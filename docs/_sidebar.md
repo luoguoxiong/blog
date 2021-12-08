@@ -25,6 +25,8 @@
 -   性能优化
     -   [性能指标](performance/quota.md '性能指标')
     -   [指标采集](performance/collect.md '指标采集')
+    -   [webpack优化性能](performance/webpackplugin.md 'webpack优化性能')
+    -   [Proload/Prefetch](performance/proloadAndprefetch.md 'Proload/Prefetch')
 -   Babel
     -   [关于 babel](babel/about.md '关于babel')
     -   [preset](babel/preset.md '统一preset')
