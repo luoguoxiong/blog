@@ -156,4 +156,24 @@ module.exports = {
 
 ## 七、按需编译
 
-能不能通过某种方式实现开发环境只编译需要的模块，类似于next开发环境的那种体验？后续再webpack插件开发补充。
+结合webpack devServer 的钩子，实现路由按需编译
+
+```js
+  devServer: {
+    static: path.join(__dirname, "dist"),
+    port: 3001,
+    historyApiFallback:true,
+    onBeforeSetupMiddleware:(devServer)=>{
+        if (!devServer) {
+            throw new Error('webpack-dev-server is not defined');
+          }
+          var myLogger = async(req, res, next) =>{
+            console.log(req.url)
+            setTimeout(async() => {
+                await next();
+            }, 1000);
+          };
+          devServer.app.use(myLogger);
+    }
+  },
+  ```
