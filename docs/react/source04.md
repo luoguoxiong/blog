@@ -3,8 +3,8 @@
 > 渲染阶段：
 >
 > 	1. 执行完所有的副作用
-> 	1. 判断finishedWork是否有PassiveMask副作用，如果有以一个优先级调用flushPassiveEffects。
-> 	1. 判断finishedWork是否有相关副作用（BeforeMutationMask | MutationMask | LayoutMask | PassiveMask）。如果有则进行commitBeforeMutationEffects、commitMutationEffects、commitLayoutEffects三个阶段。
+> 	2. 判断finishedWork是否有PassiveMask副作用，如果有以一个优先级调用flushPassiveEffects。
+> 	3. 判断finishedWork是否有相关副作用（BeforeMutationMask | MutationMask | LayoutMask | PassiveMask）。如果有则进行commitBeforeMutationEffects、commitMutationEffects、commitLayoutEffects三个阶段。
 
 ```js
 function commitRootImpl(root, renderPriorityLevel) {
@@ -213,7 +213,369 @@ function commitBeforeMutationEffectsOnFiber(finishedWork: Fiber) {
 
 ### 二、commitMutationEffects
 
+> 主要负责节点的渲染：commitMutationEffects_begin
 
+#### 1. commitMutationEffects_begin
+
+> 1. 先处理需要fiber.deletions需要删除的节点
+> 2. 判断当前节点的subtreeFlags是否存在MutationMask
+
+```js
+function commitMutationEffects_begin(root) {
+  while (nextEffect !== null) {
+    var deletions = fiber.deletions;
+    if (deletions !== null) {
+      for (var i = 0; i < deletions.length; i++) {
+        var childToDelete = deletions[i];
+          commitDeletion(root, childToDelete, fiber);
+      }
+    }
+
+    var child = fiber.child;
+
+    if ((fiber.subtreeFlags & MutationMask) !== NoFlags && child !== null) {
+      ensureCorrectReturnPointer(child, fiber);
+      nextEffect = child;
+    } else {
+      commitMutationEffects_complete(root);
+    }
+  }
+}
+```
+
+#### 2. commitDeletion
+
+> 删除相关子节点，并触发对应的Effect相关函数
+>
+> 重置fiber和fiber的return
+
+```js
+function commitDeletion(
+  finishedRoot: FiberRoot,
+  current: Fiber,
+  nearestMountedAncestor: Fiber,
+): void {
+  unmountHostComponents(finishedRoot, current, nearestMountedAncestor);
+  // 重置被删除的fiber和fiber.alternate 的return值为null
+  detachFiberMutation(current);
+}
+```
+
+#### 3. unmountHostComponents
+
+```js
+function unmountHostComponents(
+  finishedRoot: FiberRoot, // 根节点FiberRoot
+  current: Fiber, // 将要删除的节点
+  nearestMountedAncestor: Fiber, // 父节点
+): void {
+  let node: Fiber = current;
+
+  let currentParentIsValid = false;
+
+  let currentParent;
+  let currentParentIsContainer;
+
+  while (true) {
+    if (!currentParentIsValid) {
+      // 找到父级的dom节点
+      let parent = node.return;
+      findParent: while (true) {
+        const parentStateNode = parent.stateNode;
+        switch (parent.tag) {
+          case HostComponent:
+            currentParent = parentStateNode;
+            currentParentIsContainer = false;
+            break findParent;
+          case HostRoot:
+            currentParent = parentStateNode.containerInfo;
+            currentParentIsContainer = true;
+            break findParent;
+          case HostPortal:
+            currentParent = parentStateNode.containerInfo;
+            currentParentIsContainer = true;
+            break findParent;
+        }
+        parent = parent.return;
+      }
+      currentParentIsValid = true;
+    }
+
+    if (node.tag === HostComponent || node.tag === HostText) {
+      commitNestedUnmounts(finishedRoot, node, nearestMountedAncestor);
+      if (currentParentIsContainer) {
+        removeChildFromContainer(
+          ((currentParent: any): Container),
+          (node.stateNode: Instance | TextInstance),
+        );
+      } else {
+        removeChild(
+          ((currentParent: any): Instance),
+          (node.stateNode: Instance | TextInstance),
+        );
+      }
+    } else if (
+      enableSuspenseServerRenderer &&
+      node.tag === DehydratedFragment
+    ) {
+      if (enableSuspenseCallback) {
+        const hydrationCallbacks = finishedRoot.hydrationCallbacks;
+        if (hydrationCallbacks !== null) {
+          const onDeleted = hydrationCallbacks.onDeleted;
+          if (onDeleted) {
+            onDeleted((node.stateNode: SuspenseInstance));
+          }
+        }
+      }
+      if (currentParentIsContainer) {
+        clearSuspenseBoundaryFromContainer(
+          ((currentParent: any): Container),
+          (node.stateNode: SuspenseInstance),
+        );
+      } else {
+        clearSuspenseBoundary(
+          ((currentParent: any): Instance),
+          (node.stateNode: SuspenseInstance),
+        );
+      }
+    } else if (node.tag === HostPortal) {
+      if (node.child !== null) {
+        currentParent = node.stateNode.containerInfo;
+        currentParentIsContainer = true;
+        node.child.return = node;
+        node = node.child;
+        continue;
+      }
+    } else {
+      commitUnmount(finishedRoot, node, nearestMountedAncestor);
+      if (node.child !== null) {
+        node.child.return = node;
+        node = node.child;
+        continue;
+      }
+    }
+    if (node === current) {
+      return;
+    }
+    while (node.sibling === null) {
+      if (node.return === null || node.return === current) {
+        return;
+      }
+      node = node.return;
+      if (node.tag === HostPortal) {
+        currentParentIsValid = false;
+      }
+    }
+    node.sibling.return = node.return;
+    node = node.sibling;
+  }
+}
+```
+
+#### 4.commitNestedUnmounts
+
+> 对tag为HostComponent或者HostText的Fiber节点处理，并对子它的子节点执行commitUnmount函数。
+
+```js
+function commitNestedUnmounts(
+  finishedRoot: FiberRoot,
+  root: Fiber,
+  nearestMountedAncestor: Fiber,
+): void {
+  let node: Fiber = root;
+  while (true) {
+    commitUnmount(finishedRoot, node, nearestMountedAncestor);
+    if (
+      node.child !== null &&
+      (!supportsMutation || node.tag !== HostPortal)
+    ) {
+      node.child.return = node;
+      node = node.child;
+      continue;
+    }
+    if (node === root) {
+      return;
+    }
+    while (node.sibling === null) {
+      if (node.return === null || node.return === root) {
+        return;
+      }
+      node = node.return;
+    }
+    node.sibling.return = node.return;
+    node = node.sibling;
+  }
+}
+```
+
+#### 5.commitUnmount
+
+> 1. 对于函数类组件的Fiber节点，对fiber.updateQueue。取lastEffect.next作为第一个节点，依次执行effect销毁函数。
+> 2. class 组件，则是调用componentWillUnmount生命周期。
+> 3. HostComponent节点，则是ref处理操作。
+
+```js
+function commitUnmount(
+  finishedRoot: FiberRoot,
+  current: Fiber,
+  nearestMountedAncestor: Fiber,
+): void {
+  onCommitUnmount(current);
+
+  switch (current.tag) {
+    case FunctionComponent:
+    case ForwardRef:
+    case MemoComponent:
+    case SimpleMemoComponent: {
+      const updateQueue: FunctionComponentUpdateQueue | null = (current.updateQueue: any);
+      if (updateQueue !== null) {
+        const lastEffect = updateQueue.lastEffect;
+        if (lastEffect !== null) {
+          const firstEffect = lastEffect.next;
+
+          let effect = firstEffect;
+          do {
+            const {destroy, tag} = effect;
+            if (destroy !== undefined) {
+              if ((tag & HookInsertion) !== NoHookEffect) {
+                safelyCallDestroy(current, nearestMountedAncestor, destroy);
+              } else if ((tag & HookLayout) !== NoHookEffect) {
+                if (enableSchedulingProfiler) {
+                  markComponentLayoutEffectUnmountStarted(current);
+                }
+
+                if (
+                  enableProfilerTimer &&
+                  enableProfilerCommitHooks &&
+                  current.mode & ProfileMode
+                ) {
+                  startLayoutEffectTimer();
+                  safelyCallDestroy(current, nearestMountedAncestor, destroy);
+                  recordLayoutEffectDuration(current);
+                } else {
+                  safelyCallDestroy(current, nearestMountedAncestor, destroy);
+                }
+
+                if (enableSchedulingProfiler) {
+                  markComponentLayoutEffectUnmountStopped();
+                }
+              }
+            }
+            effect = effect.next;
+          } while (effect !== firstEffect);
+        }
+      }
+      return;
+    }
+    case ClassComponent: {
+      safelyDetachRef(current, nearestMountedAncestor);
+      const instance = current.stateNode;
+      if (typeof instance.componentWillUnmount === 'function') {
+        safelyCallComponentWillUnmount(
+          current,
+          nearestMountedAncestor,
+          instance,
+        );
+      }
+      return;
+    }
+    case HostComponent: {
+      safelyDetachRef(current, nearestMountedAncestor);
+      return;
+    }
+    case HostPortal: {
+      // TODO: this is recursive.
+      // We are also not using this parent because
+      // the portal will get pushed immediately.
+      if (supportsMutation) {
+        unmountHostComponents(finishedRoot, current, nearestMountedAncestor);
+      } else if (supportsPersistence) {
+        emptyPortalContainer(current);
+      }
+      return;
+    }
+    case DehydratedFragment: {
+      if (enableSuspenseCallback) {
+        const hydrationCallbacks = finishedRoot.hydrationCallbacks;
+        if (hydrationCallbacks !== null) {
+          const onDeleted = hydrationCallbacks.onDeleted;
+          if (onDeleted) {
+            onDeleted((current.stateNode: SuspenseInstance));
+          }
+        }
+      }
+      return;
+    }
+    case ScopeComponent: {
+      if (enableScopeAPI) {
+        safelyDetachRef(current, nearestMountedAncestor);
+      }
+      return;
+    }
+  }
+}
+```
+
+#### 6.commitMutationEffects_complete
+
+> 有关于nextEffect相关操作，当前节点执行完commitMutationEffectsOnFiber，如果有兄弟节点则会继续执行commitMutationEffects_begin，当没有兄弟节点了，则nextEffect赋值为fiber.return，执行commitMutationEffects_complete。
+
+```js
+function commitMutationEffects_complete(root: FiberRoot) {
+  while (nextEffect !== null) {
+    const fiber = nextEffect;
+    commitMutationEffectsOnFiber(fiber, root);
+    if (sibling !== null) {
+      nextEffect = sibling;
+      return;
+    }
+    nextEffect = fiber.return;
+  }
+}
+```
+
+#### 7.commitMutationEffectsOnFiber
+
+> 根据Fiber的flags属性，进行节点的Placement、PlacementAndUpdate、Update等相关操作。（既dom节点的添加和修改）
+
+```js
+function commitMutationEffectsOnFiber(finishedWork: Fiber, root: FiberRoot) {
+  const flags = finishedWork.flags;
+  const primaryFlags = flags & (Placement | Update | Hydrating);
+  outer: switch (primaryFlags) {
+    case Placement: {
+      commitPlacement(finishedWork);
+      finishedWork.flags &= ~Placement;
+      break;
+    }
+    case PlacementAndUpdate: {
+      // Placement
+      commitPlacement(finishedWork);
+      finishedWork.flags &= ~Placement;
+      // Update
+      const current = finishedWork.alternate;
+      commitWork(current, finishedWork);
+      break;
+    }
+    case Hydrating: {
+      finishedWork.flags &= ~Hydrating;
+      break;
+    }
+    case HydratingAndUpdate: {
+      finishedWork.flags &= ~Hydrating;
+      // Update
+      const current = finishedWork.alternate;
+      commitWork(current, finishedWork);
+      break;
+    }
+    case Update: {
+      const current = finishedWork.alternate;
+      commitWork(current, finishedWork);
+      break;
+    }
+  }
+}
+```
 
 ### 三、commitLayoutEffects
 
