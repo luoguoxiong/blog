@@ -11,6 +11,7 @@
     -   [源码分析-React.render](react/source02.md '源码分析-React.render')
     -   [源码分析-Fiber 树的构建](react/source03.md '源码分析-Fiber树的构建')
     -   [源码分析-渲染阶段](react/source04.md '源码分析-渲染阶段')
+    -   [源码分析 setState过程](react/source05.md '源码分析 setState过程')
 -   前端工程
     -   [vite 实现原理](engineering/vite.md 'webpack 实现原理')
     -   [webpack 打包原理](engineering/webpack/about.md 'webpack 打包原理')
