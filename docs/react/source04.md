@@ -2,9 +2,9 @@
 
 > 渲染阶段：
 >
-> 	1. 执行完所有的副作用
-> 	2. 判断finishedWork是否有PassiveMask副作用，如果有以一个优先级调用flushPassiveEffects。
-> 	3. 判断finishedWork是否有相关副作用（BeforeMutationMask | MutationMask | LayoutMask | PassiveMask）。如果有则进行commitBeforeMutationEffects、commitMutationEffects、commitLayoutEffects三个阶段。
+> 1. 执行完所有的副作用
+> 2. 判断finishedWork是否有PassiveMask副作用，如果有以一个优先级调用flushPassiveEffects。
+> 3. 判断finishedWork是否有相关副作用（BeforeMutationMask | MutationMask | LayoutMask | PassiveMask）。如果有则进行commitBeforeMutationEffects、commitMutationEffects、commitLayoutEffects三个阶段。
 
 ```js
 function commitRootImpl(root, renderPriorityLevel) {
@@ -579,11 +579,312 @@ function commitMutationEffectsOnFiber(finishedWork: Fiber, root: FiberRoot) {
 
 ### 三、commitLayoutEffects
 
+> 处理渲染后的fiber节点处理，具体操作在commitLayoutEffectOnFiber函数。
 
+#### 1. commitLayoutEffects
+
+```JS
+function commitLayoutEffects(
+  finishedWork: Fiber,
+  root: FiberRoot,
+  committedLanes: Lanes,
+): void {
+  inProgressLanes = committedLanes;
+  inProgressRoot = root;
+  nextEffect = finishedWork;
+
+  commitLayoutEffects_begin(finishedWork, root, committedLanes);
+
+  inProgressLanes = null;
+  inProgressRoot = null;
+}
+```
+
+#### 2.commitLayoutEffects_begin
+
+```JS
+
+function commitLayoutEffects_begin(
+  subtreeRoot: Fiber,
+  root: FiberRoot,
+  committedLanes: Lanes,
+) {
+  // Suspense layout effects semantics don't change for legacy roots.
+  const isModernRoot = (subtreeRoot.mode & ConcurrentMode) !== NoMode;
+
+  while (nextEffect !== null) {
+    const fiber = nextEffect;
+    const firstChild = fiber.child;
+
+    if (
+      enableSuspenseLayoutEffectSemantics &&
+      fiber.tag === OffscreenComponent &&
+      isModernRoot
+    ) {
+      // Keep track of the current Offscreen stack's state.
+      const isHidden = fiber.memoizedState !== null;
+      const newOffscreenSubtreeIsHidden = isHidden || offscreenSubtreeIsHidden;
+      if (newOffscreenSubtreeIsHidden) {
+        // The Offscreen tree is hidden. Skip over its layout effects.
+        commitLayoutMountEffects_complete(subtreeRoot, root, committedLanes);
+        continue;
+      } else {
+        // TODO (Offscreen) Also check: subtreeFlags & LayoutMask
+        const current = fiber.alternate;
+        const wasHidden = current !== null && current.memoizedState !== null;
+        const newOffscreenSubtreeWasHidden =
+          wasHidden || offscreenSubtreeWasHidden;
+        const prevOffscreenSubtreeIsHidden = offscreenSubtreeIsHidden;
+        const prevOffscreenSubtreeWasHidden = offscreenSubtreeWasHidden;
+
+        // Traverse the Offscreen subtree with the current Offscreen as the root.
+        offscreenSubtreeIsHidden = newOffscreenSubtreeIsHidden;
+        offscreenSubtreeWasHidden = newOffscreenSubtreeWasHidden;
+
+        if (offscreenSubtreeWasHidden && !prevOffscreenSubtreeWasHidden) {
+          // This is the root of a reappearing boundary. Turn its layout effects
+          // back on.
+          nextEffect = fiber;
+          reappearLayoutEffects_begin(fiber);
+        }
+
+        let child = firstChild;
+        while (child !== null) {
+          nextEffect = child;
+          commitLayoutEffects_begin(
+            child, // New root; bubble back up to here and stop.
+            root,
+            committedLanes,
+          );
+          child = child.sibling;
+        }
+
+        // Restore Offscreen state and resume in our-progress traversal.
+        nextEffect = fiber;
+        offscreenSubtreeIsHidden = prevOffscreenSubtreeIsHidden;
+        offscreenSubtreeWasHidden = prevOffscreenSubtreeWasHidden;
+        commitLayoutMountEffects_complete(subtreeRoot, root, committedLanes);
+
+        continue;
+      }
+    }
+
+    if ((fiber.subtreeFlags & LayoutMask) !== NoFlags && firstChild !== null) {
+      ensureCorrectReturnPointer(firstChild, fiber);
+      nextEffect = firstChild;
+    } else {
+      commitLayoutMountEffects_complete(subtreeRoot, root, committedLanes);
+    }
+  }
+}
+```
+
+#### 3. commitLayoutMountEffects_complete
+
+```JS
+function commitLayoutMountEffects_complete(
+  subtreeRoot: Fiber,
+  root: FiberRoot,
+  committedLanes: Lanes,
+) {
+  while (nextEffect !== null) {
+    const fiber = nextEffect;
+    if ((fiber.flags & LayoutMask) !== NoFlags) {
+      const current = fiber.alternate;
+      commitLayoutEffectOnFiber(root, current, fiber, committedLanes);
+    }
+
+    if (fiber === subtreeRoot) {
+      nextEffect = null;
+      return;
+    }
+
+    const sibling = fiber.sibling;
+    if (sibling !== null) {
+      ensureCorrectReturnPointer(sibling, fiber.return);
+      nextEffect = sibling;
+      return;
+    }
+
+    nextEffect = fiber.return;
+  }
+}
+```
+
+#### 4. commitLayoutEffectOnFiber
+
+> functionComponents 主要处理effect内的函数。
+>
+> ClassComponent：如果是首次渲染，则执行componentDidMount函数，否则执行componentDidUpdate，同样也会执行setState后的回调函数。
+>
+> HostComponent：处理一些表单dom节点是否需要追加focus属性。
+
+```JS
+function commitLayoutEffectOnFiber(
+  finishedRoot: FiberRoot,
+  current: Fiber | null,
+  finishedWork: Fiber,
+  committedLanes: Lanes,
+): void {
+  if ((finishedWork.flags & LayoutMask) !== NoFlags) {
+    switch (finishedWork.tag) {
+      case FunctionComponent:
+      case ForwardRef:
+      case SimpleMemoComponent: {
+        if (!enableSuspenseLayoutEffectSemantics ||!offscreenSubtreeWasHidden) {
+          if (enableProfilerTimer &&enableProfilerCommitHooks &&finishedWork.mode & ProfileMode) {
+              commitHookEffectListMount(HookLayout | HookHasEffect,finishedWork);
+          } else {
+            commitHookEffectListMount(HookLayout | HookHasEffect, finishedWork);
+          }
+        }
+        break;
+      }
+      case ClassComponent: {
+        const instance = finishedWork.stateNode;
+        if (finishedWork.flags & Update) {
+          if (!offscreenSubtreeWasHidden) {
+            if (current === null) {
+                instance.componentDidMount();
+            } else {
+              const prevProps =
+                finishedWork.elementType === finishedWork.type
+                  ? current.memoizedProps
+                  : resolveDefaultProps(
+                      finishedWork.type,
+                      current.memoizedProps,
+                    );
+              const prevState = current.memoizedState;
+              instance.componentDidUpdate(
+                prevProps,
+                prevState,
+                instance.__reactInternalSnapshotBeforeUpdate,
+              );
+          }
+        }
+        const updateQueue = finishedWork.updateQueue
+        if (updateQueue !== null) {
+          commitUpdateQueue(finishedWork, updateQueue, instance);
+        }
+        break;
+      }
+      case HostRoot: {
+        // TODO: I think this is now always non-null by the time it reaches the
+        // commit phase. Consider removing the type check.
+        const updateQueue = finishedWork.updateQueue
+        if (updateQueue !== null) {
+          let instance = null;
+          if (finishedWork.child !== null) {
+            switch (finishedWork.child.tag) {
+              case HostComponent:
+                instance = getPublicInstance(finishedWork.child.stateNode);
+                break;
+              case ClassComponent:
+                instance = finishedWork.child.stateNode;
+                break;
+            }
+          }
+          commitUpdateQueue(finishedWork, updateQueue, instance);
+        }
+        break;
+      }
+      case HostComponent: {
+        const instance =  finishedWork.stateNode;
+        if (current === null && finishedWork.flags & Update) {
+          const type = finishedWork.type;
+          const props = finishedWork.memoizedProps;
+          commitMount(instance, type, props, finishedWork);
+        }
+
+        break;
+      }
+      case HostText: {
+        // We have no life-cycles associated with text.
+        break;
+      }
+      case HostPortal: {
+        // We have no life-cycles associated with portals.
+        break;
+      }
+      case SuspenseComponent: {
+        commitSuspenseHydrationCallbacks(finishedRoot, finishedWork);
+        break;
+      }
+      case SuspenseListComponent:
+      case IncompleteClassComponent:
+      case ScopeComponent:
+      case OffscreenComponent:
+      case LegacyHiddenComponent:
+        break;
+      default:
+        throw new Error(
+          'This unit of work tag should not have side-effects. This error is ' +
+            'likely caused by a bug in React. Please file an issue.',
+        );
+    }
+  }
+}
+```
 
 ### 四、flushPassiveEffects
 
+> 在渲染阶段初期和渲染后都有可能执行这个函数，主要整个Fiber树处理funtionComponent effect执行和清除操作。
 
+#### 1. flushPassiveEffects
 
+```js
+function flushPassiveEffects(): boolean {
+  if (rootWithPendingPassiveEffects !== null) {
+    const root = rootWithPendingPassiveEffects;
+    try {
+      ReactCurrentBatchConfig.transition = 0;
+      setCurrentUpdatePriority(priority);
+      return flushPassiveEffectsImpl();
+    } finally {
+      setCurrentUpdatePriority(previousPriority);
+      ReactCurrentBatchConfig.transition = prevTransition;
+      releaseRootPooledCache(root, remainingLanes);
+    }
+  }
+  return false;
+}
+```
 
+#### 2. flushPassiveEffectsImpl
 
+````js
+function flushPassiveEffectsImpl() {
+  if (rootWithPendingPassiveEffects === null) {
+    return false;
+  }
+
+  const root = rootWithPendingPassiveEffects;
+
+  commitPassiveUnmountEffects(root.current);
+  commitPassiveMountEffects(root, root.current);
+
+  // TODO: Move to commitPassiveMountEffects
+  if (enableProfilerTimer && enableProfilerCommitHooks) {
+    const profilerEffects = pendingPassiveProfilerEffects;
+    pendingPassiveProfilerEffects = [];
+    for (let i = 0; i < profilerEffects.length; i++) {
+      const fiber = ((profilerEffects[i]: any): Fiber);
+      commitPassiveEffectDurations(root, fiber);
+    }
+  }
+
+  executionContext = prevExecutionContext;
+
+  flushSyncCallbacks();
+}
+````
+
+#### 3. commitPassiveUnmountEffects
+
+> 主要执行effect destroy函数，类似于useEffect return 函数
+
+#### 4. commitPassiveMountEffects
+
+>  const create = effect.create;
+>
+> effect.destroy = create();
