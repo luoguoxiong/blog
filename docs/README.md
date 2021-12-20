@@ -4,7 +4,9 @@ React
 
 [Remax 实现原理](react/remax.md 'Remax实现原理')、[Hooks 坑位告警](react/hooks.md 'Hooks 坑位告警')、 [React 无痕埋点实现](react/track.md 'React无痕埋点实现')、[React 性能优化](react/performance.md 'React 性能优化')、[React Fiber](react/fiber.md 'React Fiber')
 
-[源码分析-调试篇](react/source01.md '源码分析-调试篇')、[源码分析-React.render](react/source02.md '源码分析-React.render')、[源码分析-Fiber 树的构建](react/source03.md '源码分析-Fiber树的构建')、[源码分析-渲染阶段](react/source04.md '源码分析-渲染阶段')、[源码分析 setState过程](react/source05.md '源码分析 setState过程')
+[源码分析-调试篇](react/source01.md '源码分析-调试篇')、[源码分析-React.render](react/source02.md '源码分析-React.render')、[源码分析-Fiber 树的构建](react/source03.md '源码分析-Fiber树的构建')、[源码分析-渲染阶段](react/source04.md '源码分析-渲染阶段')
+
+[源码分析-setState过程](react/source05.md '源码分析-ssetState过程')、[源码分析-diff算法](react/source06.md '源码分析-diff算法')
 
 前端工程
 
