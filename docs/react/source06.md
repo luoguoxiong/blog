@@ -110,16 +110,16 @@
 >
 > 第二轮遍历步骤如下：
 >
-> 	1. `newChildren`遍历完，`oldFiber`没遍历完，需要遍历剩下的`oldFiber`，依次标记`Deletion`。
-> 	1. `newChildren`没遍历完，`oldFiber`遍历完，需要遍历剩下的`newChildren`为生成的`workInProgress fiber`依次标记`Placement`。
+> 1. `newChildren`遍历完，`oldFiber`没遍历完，需要遍历剩下的`oldFiber`，依次标记`Deletion`。
+> 2. `newChildren`没遍历完，`oldFiber`遍历完，需要遍历剩下的`newChildren`为生成的`workInProgress fiber`依次标记`Placement`。
 >
 > 第三轮遍历：
 >
-> 由于本次更新中节点是按`newChildren`的顺序排列。在遍历`newChildren`过程中，每个`遍历到的可复用节点`一定是当前遍历到的`所有可复用节点`中**最靠右的那个**，即一定在`lastPlacedIndex`对应的`可复用的节点`在本次更新中位置的后面。
+> 更新中节点是按`newChildren`的顺序排列。在遍历`newChildren`过程中，每个`遍历到的可复用节点`一定是当前遍历到的`所有可复用节点`中**最靠右的那个**，即一定在`lastPlacedIndex`对应的`可复用的节点`在本次更新中位置的后面。
 >
-> 那么我们只需要比较`遍历到的可复用节点`在上次更新时是否也在`lastPlacedIndex`对应的`oldFiber`后面，就能知道两次更新中这两个节点的相对位置改变没有。
+> 只需要比较`遍历到的可复用节点`在上次更新时是否也在`lastPlacedIndex`对应的`oldFiber`后面，就能知道两次更新中这两个节点的相对位置改变没有。
 >
-> 我们用变量`oldIndex`表示`遍历到的可复用节点`在`oldFiber`中的位置索引。如果`oldIndex < lastPlacedIndex`，代表本次更新该节点需要向右移动。
+> 用变量`oldIndex`表示`遍历到的可复用节点`在`oldFiber`中的位置索引。如果`oldIndex < lastPlacedIndex`，代表本次更新该节点需要向右移动。
 >
 > `lastPlacedIndex`初始为`0`，每遍历一个可复用的节点，如果`oldIndex >= lastPlacedIndex`，则`lastPlacedIndex = oldIndex`。
 
