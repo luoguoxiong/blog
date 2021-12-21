@@ -47,6 +47,7 @@
     -   [微前端 CSS 隔离](micro/cssSandbox.md '微前端 CSS隔离')
     -   [微前端 清除副作用](micro/effect.md '微前端 清除副作用')
     -   [微前端 通信方案](micro/globalState.md '微前端 通信方案')
+    -   [微前端 模块联邦](micro/modulefederation.md '微前端 模块联邦')
 -   技术方案
     -   [静态导出页面](case/page-build.md '静态导出页面')
     -   [自动化构建部署](case/auto-build.md '自动化构建部署')
