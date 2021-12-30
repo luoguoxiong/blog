@@ -68,5 +68,8 @@
     -   [回溯算法排列问题](algorithm/reback02.md '回溯算法排列问题')
     -   [贪心算法一](algorithm/greedy01.md '贪心算法一')
     -   [贪心算法二](algorithm/greedy02.md '贪心算法二')
+    -   [买卖股票问题](algorithm/buyAndSell.md '买卖股票问题')
+    -   [打家劫舍问题](algorithm/house-robber.md.md '打家劫舍问题')
+    -   [01背包](algorithm/01package.md.md '01背包')
 -   计算机网络
     -   [UDP 网络协议](network/udp.md 'UDP网络协议')
