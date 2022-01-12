@@ -71,5 +71,8 @@
     -   [买卖股票问题](algorithm/buyAndSell.md '买卖股票问题')
     -   [打家劫舍问题](algorithm/house-robber.md.md '打家劫舍问题')
     -   [01背包](algorithm/01package.md.md '01背包')
+    -   [双指针](algorithm/doublePointer.md.md '双指针')
+    -   [二分法](algorithm/binarySearch.md.md '二分法')
+    -   [动态划窗](algorithm/dynamicWindowing.md.md '动态划窗')
 -   计算机网络
     -   [UDP 网络协议](network/udp.md 'UDP网络协议')
