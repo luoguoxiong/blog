@@ -74,5 +74,6 @@
     -   [双指针](algorithm/doublePointer.md.md '双指针')
     -   [二分法](algorithm/binarySearch.md.md '二分法')
     -   [动态划窗](algorithm/dynamicWindowing.md.md '动态划窗')
+    -   [快慢指针](algorithm/fastSlowIndex.md.md '快慢指针')
 -   计算机网络
     -   [UDP 网络协议](network/udp.md 'UDP网络协议')

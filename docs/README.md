@@ -52,7 +52,7 @@ Web 安全
 
 [回溯算法](algorithm/backTracking.md '回溯算法')、[回溯算法组合问题](algorithm/reback.md '回溯算法组合问题')、[回溯算法排列问题](algorithm/reback02.md '回溯算法排列问题')
 
-[贪心算法一](algorithm/greedy01.md '贪心算法一')、[贪心算法二](algorithm/greedy02.md '贪心算法二')、[买卖股票问题](algorithm/buyAndSell.md '买卖股票问题')、[打家劫舍问题](algorithm/house-robber.md.md '打家劫舍问题')、[01背包](algorithm/01package.md.md '01背包')、[双指针](algorithm/doublePointer.md.md '双指针')、[二分法](algorithm/binarySearch.md.md '二分法')、[动态划窗](algorithm/dynamicWindowing.md.md '动态划窗')
+[贪心算法一](algorithm/greedy01.md '贪心算法一')、[贪心算法二](algorithm/greedy02.md '贪心算法二')、[买卖股票问题](algorithm/buyAndSell.md '买卖股票问题')、[打家劫舍问题](algorithm/house-robber.md.md '打家劫舍问题')、[01背包](algorithm/01package.md.md '01背包')、[双指针](algorithm/doublePointer.md.md '双指针')、[二分法](algorithm/binarySearch.md.md '二分法')、[动态划窗](algorithm/dynamicWindowing.md.md '动态划窗')、[快慢指针](algorithm/fastSlowIndex.md.md '快慢指针')
 
 计算机网络
 
