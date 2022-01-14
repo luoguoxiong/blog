@@ -53,3 +53,23 @@ var detectCycle = function(head) {
 };
 ```
 
+### 删除字符串首末空格和中间联系空格保留一个
+
+```js
+  const removeSpaces = (arr) => {
+    let slowIndex = 0;
+    let fastIndex = 0;
+    while(fastIndex < arr.length){
+      // 如果首位或者连续多个空格
+      if(arr[fastIndex] === ' ' && (fastIndex === 0 || arr[fastIndex - 1] === ' ')){
+        fastIndex++;
+      }else{
+        arr[slowIndex] = arr[fastIndex];
+        slowIndex++;
+        fastIndex++;
+      }
+    }
+    arr.length = arr[slowIndex - 1] === ' ' ? slowIndex - 1 : slowIndex;
+  };
+```
+

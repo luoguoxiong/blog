@@ -55,3 +55,77 @@ var removeElement = function(nums, val) {
 };
 ```
 
+### 三数之和
+
+> 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
+>
+> **注意：** 答案中不可以包含重复的三元组。
+>
+> 示例：
+>
+> 给定数组 nums = [-1, 0, 1, 2, -1, -4]，
+>
+> 满足要求的三元组集合为： [ [-1, 0, 1], [-1, -1, 2] ]
+
+```js
+var threeSum = function(nums) {
+  const len = nums.length;
+  if(len < 3) return [];
+  nums.sort((a, b) => a - b);
+  const resSet = new Set();
+  for(let i = 0; i < len - 2; i++) {
+    if(nums[i] > 0) break;
+    let l = i + 1,
+      r = len - 1;
+    while(l < r) {
+      const sum = nums[i] + nums[l] + nums[r];
+      if(sum < 0) { l++; continue; };
+      if(sum > 0) { r--; continue; };
+      resSet.add(`${nums[i]},${nums[l]},${nums[r]}`);
+      l++;
+      r--;
+    }
+  }
+  return Array.from(resSet).map((i) => i.split(','));
+};
+```
+
+### 数组倒序
+
+```js
+var reverseString = function(s) {
+   let h = 0;
+   let m = s.length - 1;
+   while(h < m){
+   [s[h], s[m]] = [s[m], s[h]];
+    h++;
+    m--;
+   }
+   return s;
+};
+```
+
+### 替换空格
+
+> 请实现一个函数，把字符串 s 中的每个空格替换成"%20"。
+>
+> 示例 1： 输入：s = "We are happy."
+> 输出："We%20are%20happy."
+
+```js
+const replaceSpace = (s)=>{
+  const count = s.split(',').map(item=>item === '').length
+  let left = s.length;
+  let right = left + 2 * count - 1
+  whilt(left>0){
+    if(s[left]===''){
+      s[right --] = 0
+      s[right--] = 2
+      s[right--] = '%'
+    }
+    s[right--] = s[left--]
+  }
+  return s
+}
+```
+
