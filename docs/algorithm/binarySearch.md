@@ -60,4 +60,26 @@ var searchInsert = function(nums, target) {
   return index;
 };
 ```
+### 构造二叉搜索树
+
+> 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
+>
+> 一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1。
+
+```js
+var sortedArrayToBST = function (nums) {
+  const buildTree = (Arr, left, right) => {
+        if (left > right)
+            return null;
+
+        let mid = Math.floor(left + (right - left) / 2);
+
+        let root = new TreeNode(Arr[mid]);
+        root.left = buildTree(Arr, left, mid - 1);
+        root.right = buildTree(Arr, mid + 1, right);
+        return root;
+    }
+    return buildTree(nums, 0, nums.length - 1);
+}
+```
 
