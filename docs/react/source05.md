@@ -4,7 +4,41 @@
 
 ![](../img/react/setState.jpg)
 
+## 几行代码掌握原理
+```js
+let obj = {
+  a: 1,
+  b: 2,
+};
 
+const setState = (isSync, data) => {
+  if(isSync){
+    setTimeout(() => {
+      obj = { ...obj, ...data};
+    }, 0);
+  }else{
+     obj = { ...obj, ...data};
+  }
+};
+
+const test01 = () => {
+  setState(true, { a: 3 });
+  console.log(obj); // { a: 1, b: 2 }
+  setState(true, { b: 2 });
+  console.log(obj); // { a: 1, b: 2 }
+};
+
+const test02 = () => {
+  setTimeout(() => {
+    setState(false, { a: 6 });
+    console.log(obj); // { a: 6, b: 2 }
+    setState(false, { b: 7 });
+    console.log(obj); // { a: 6, b: 7 }
+  }, 1000);
+};
+test01();
+test02();
+````
 ## 1.this.setState内调用this.updater.enqueueSetState
 
 ```js
