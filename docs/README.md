@@ -16,13 +16,17 @@ React
 
 [package.json 关键字段](engineering/package.md 'package.json关键字段')、[前端部署](engineering/deloy.md '前端部署')
 
+JavaScript
+
+[页面生命周期](javaScript/lifeCycle.md '页面生命周期')
+
 Babel
 
 [关于 babel](babel/about.md '关于babel')、[preset](babel/preset.md 'preset')
 
 性能优化
 
-[性能指标](performance/quota.md '性能指标')、[指标采集](performance/collect.md '指标采集')、[webpack优化性能](performance/webpackplugin.md 'webpack优化性能')、[Proload/Prefetch](performance/proloadAndprefetch.md 'Proload/Prefetch')
+[性能指标](performance/quota.md '性能指标')、[指标采集](performance/collect.md '指标采集')、[首屏性能](performance/firstPermance.md '首屏性能')、[webpack优化性能](performance/webpackplugin.md 'webpack优化性能')、[Proload/Prefetch](performance/proloadAndprefetch.md 'Proload/Prefetch')
 
 模块化
 

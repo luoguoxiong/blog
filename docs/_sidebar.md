@@ -24,9 +24,12 @@
     -   [前端构建工具区别](engineering/build.md '前端构建工具区别')
     -   [package.json 关键字段](engineering/package.md 'package.json关键字段')
     -   [前端部署](engineering/deloy.md '前端部署')
+-   JavaScript
+    -   [页面生命周期](javaScript/lifeCycle.md '页面生命周期')
 -   性能优化
     -   [性能指标](performance/quota.md '性能指标')
     -   [指标采集](performance/collect.md '指标采集')
+    -   [首屏性能](performance/firstPermance.md '首屏性能')
     -   [webpack优化性能](performance/webpackplugin.md 'webpack优化性能')
     -   [Proload/Prefetch](performance/proloadAndprefetch.md 'Proload/Prefetch')
 -   Babel
