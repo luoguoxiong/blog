@@ -26,6 +26,7 @@
     -   [前端部署](engineering/deloy.md '前端部署')
 -   JavaScript
     -   [页面生命周期](javaScript/lifeCycle.md '页面生命周期')
+    -   [EventLoop](javaScript/eventLoop.md 'EventLoop')
 -   性能优化
     -   [性能指标](performance/quota.md '性能指标')
     -   [指标采集](performance/collect.md '指标采集')
