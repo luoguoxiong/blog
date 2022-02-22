@@ -40,6 +40,8 @@
 - clientTop、clientLeft、clientWidth、clientHeight
 - getComputedStyle()
 - getBoundingClientRect
+- elem.focus()、elem.focus.select()
+- mouseEvt.layerX、 mouseEvt.layerY、mouseEvt.offsetX、mouseEvt.offsetY 
 
 如果要使用它们，最好将值缓存起来。
 
