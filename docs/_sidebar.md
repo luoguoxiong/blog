@@ -33,6 +33,7 @@
     -   [首屏性能](performance/firstPermance.md '首屏性能')
     -   [webpack优化性能](performance/webpackplugin.md 'webpack优化性能')
     -   [Proload/Prefetch](performance/proloadAndprefetch.md 'Proload/Prefetch')
+    -   [回流与重绘](performance/render.md '回流与重绘')
 -   Babel
     -   [关于 babel](babel/about.md '关于babel')
     -   [preset](babel/preset.md '统一preset')
