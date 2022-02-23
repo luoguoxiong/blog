@@ -18,7 +18,7 @@ React
 
 JavaScript
 
-[页面生命周期](javaScript/lifeCycle.md '页面生命周期')、[EventLoop](javaScript/eventLoop.md 'EventLoop')
+[页面生命周期](javaScript/lifeCycle.md '页面生命周期')、[EventLoop](javaScript/eventLoop.md 'EventLoop')、[数据劫持](javaScript/datahijack.md '数据劫持')
 
 Babel
 
