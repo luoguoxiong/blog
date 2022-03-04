@@ -154,6 +154,21 @@ module.exports = {
 
 **注意：仅支持开发环境**
 
+#### Webpack v5 Cache
+
+https://webpack.docschina.org/configuration/cache/
+
+缓存生成的 webpack 模块和 chunk，来改善构建速度。`cache` 会在开发模式设置成 `type: 'memory'` 而且在生产模式中被禁用。 `cache: true` 与 `cache: { type: 'memory' }` 配置作用一致
+
+```js
+module.exports = {
+  //...
+  cache: false,
+};
+```
+
+当将 cache.type 设置为 'filesystem' 是会开放更多的可配置项。
+
 ## 七、按需编译
 
 结合webpack devServer 的钩子，实现路由按需编译
@@ -176,4 +191,4 @@ module.exports = {
           devServer.app.use(myLogger);
     }
   },
-  ```
+```
