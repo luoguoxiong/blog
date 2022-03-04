@@ -52,3 +52,4 @@ Webpack 中，Tree-shaking 的实现一是先**标记**出模块导出值中哪�
 - 在 `FlagDependencyUsagePlugin` 插件中收集模块的导出值的使用情况，并记录到 `exportInfo._usedInRuntime` 集合中
 - 在 `HarmonyExportXXXDependency.Template.apply` 方法中根据导出值的使用情况生成不同的导出语句
 - 使用 DCE 工具删除 Dead Code，实现完整的树摇效果
+
