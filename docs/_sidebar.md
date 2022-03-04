@@ -19,6 +19,7 @@
     -   [webpack 打包原理](engineering/webpack/about.md 'webpack 打包原理')
     -   [webpack 插件开发](engineering/webpack/plugin.md 'webpack 插件开发')
     -   [webpack 打包优化](engineering/webpack/speed.md 'webpack 打包优化')
+    -   [treeShaking](engineering/treeShaking.md 'treeShaking')
     -   [Lerna Github CI 发布 npm 包](engineering/lerna.md 'Lerna Github CI发布npm包')
     -   [你了解 core-js 吗](engineering/corejs.md '你了解core-js吗')
     -   [Lint 代码规范](engineering/lint.md '工程化之代码规范')
