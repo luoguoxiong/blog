@@ -2,7 +2,7 @@
 
 随笔
 
-[状态管理的那些事](note/state.md '状态管理的那些事')、[热更新原理](note/hmr.md '热更新原理')
+[状态管理的那些事](note/state.md '状态管理的那些事')、[热更新原理](note/hmr.md '热更新原理')、 [回收机制](note/gc.md '回收机制')
 
 React
 
