@@ -25,21 +25,15 @@ const runTask = (taskName) => {
 
 const tasks = [runTask, runTask, runTask];
 function myNonEssentialWork(deadline) {
-  console.log(`第${tasks.length}个任务，${deadline.timeRemaining() > 0 ? '' : '不'}可以跑了`);
-  if(deadline.timeRemaining() > 0){
-    if(tasks.length > 0){
-      tasks.length > 1 && requestIdleCallback(myNonEssentialWork);
-      const task = tasks.pop();
-      task(tasks.length);
-    }
-  }else{
+  if(deadline.timeRemaining() > 0 && tasks.length > 0){
+    console.log(`第${tasks.length}个任务，${deadline.timeRemaining() > 0 ? '' : '不'}可以跑了`);
+    const task = tasks.pop();
+    task(tasks.length);
     requestIdleCallback(myNonEssentialWork);
   }
 }
 requestIdleCallback(myNonEssentialWork);
 // 第3个任务，可以跑了
-// 第2个任务，不可以跑了
 // 第2个任务，可以跑了
-// 第1个任务，不可以跑了
 // 第1个任务，可以跑了
 ```
