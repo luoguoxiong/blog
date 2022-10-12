@@ -6,6 +6,7 @@
     -   [热更新原理](note/hmr.md '热更新原理')
     -   [回收机制](note/gc.md '回收机制')
     -   [requestIdleCallback实现](note/requestIdleCallback.md 'requestIdleCallback实现')
+    -   [typeScript 不常用的一些技巧](note/ts.md 'typeScript 不常用的一些技巧')
 -   React
     -   [Remax 实现原理](react/remax.md 'Remax实现原理')
     -   [Hooks 坑位告警](react/hooks.md 'Hooks 坑位告警')
