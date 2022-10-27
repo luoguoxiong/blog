@@ -28,3 +28,4 @@ source ~/.zshrc
 ## 遇到的问题
 1. 执行nvm命令，找不到命令，是环境变量配置、配置载入造成的。
 2. nvm install 下载源过程慢，可以切淘宝源提速 在~/.bashrc文件中添加export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+3. mac m1 执行install安装报错，先执行 arch -x86_64 zsh 兼容命令
