@@ -2,7 +2,7 @@
 
 随笔
 
-[状态管理的那些事](note/state.md '状态管理的那些事')、[热更新原理](note/hmr.md '热更新原理')、 [回收机制](note/gc.md '回收机制')、[requestIdleCallback实现](note/requestIdleCallback.md 'requestIdleCallback实现')、[typeScript 不常用的一些技巧](note/ts.md 'typeScript 不常用的一些技巧')、[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')
+[状态管理的那些事](note/state.md '状态管理的那些事')、[热更新原理](note/hmr.md '热更新原理')、 [回收机制](note/gc.md '回收机制')、[requestIdleCallback实现](note/requestIdleCallback.md 'requestIdleCallback实现')、[typeScript 不常用的一些技巧](note/ts.md 'typeScript 不常用的一些技巧')、[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 下overflow:hidden 无效](note/iosScroll.md 'IOS 下overflow:hidden 无效')
 
 React
 
