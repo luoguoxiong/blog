@@ -4,6 +4,10 @@
 
 [状态管理的那些事](note/state.md '状态管理的那些事')、[热更新原理](note/hmr.md '热更新原理')、 [回收机制](note/gc.md '回收机制')、[requestIdleCallback实现](note/requestIdleCallback.md 'requestIdleCallback实现')、[typeScript 不常用的一些技巧](note/ts.md 'typeScript 不常用的一些技巧')、[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 下overflow:hidden 无效](note/iosScroll.md 'IOS 下overflow:hidden 无效')
 
+新玩物
+
+[turbopack](newThings/turbopack.md 'turbopack')
+
 React
 
 [Remax 实现原理](react/remax.md 'Remax实现原理')、[Hooks 坑位告警](react/hooks.md 'Hooks 坑位告警')、 [React 无痕埋点实现](react/track.md 'React无痕埋点实现')、[React 性能优化](react/performance.md 'React 性能优化')、[React Fiber](react/fiber.md 'React Fiber')、[react18 新特性](react/react18.md 'react18 新特性')
