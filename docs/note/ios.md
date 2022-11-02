@@ -1,4 +1,6 @@
-# IOS 下overflow:hidden 无效
+## IOS那些坑
+
+## 1. html overflow:hidden 无效
 
 原因： ios系统 认为网页内容是个整体，需要将所有的都显示出来，所有overflow就不该起作用，这是他们刻意的，不是bug，而且在更高版本的ios7,8,9中也是这样设定的.
 
@@ -24,4 +26,24 @@ body {
   margin: 0;
   height: 100%;
 }
+```
+
+## 2. 移动端系统导航栏返回上一页，状态无更新
+```js
+import { useEffect } from 'react';
+
+export const useIosRouteBack = () => {
+  useEffect(() => {
+    const fn = (event) => {
+        if (event.persisted || window.performance && window.performance.navigation.type === 2) {
+          window.location.reload();
+        }
+    };
+    window.addEventListener('pageshow', fn);
+    return () => {
+      window.removeEventListener('pageshow', fn);
+    };
+  }, []);
+};
+
 ```

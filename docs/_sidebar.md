@@ -8,7 +8,7 @@
     -   [requestIdleCallback实现](note/requestIdleCallback.md 'requestIdleCallback实现')
     -   [typeScript 不常用的一些技巧](note/ts.md 'typeScript 不常用的一些技巧')
     -   [nvm Node版本工具](note/nvm.md 'nvm Node版本工具')
-    -   [IOS 下overflow:hidden 无效](note/iosScroll.md 'IOS 下overflow:hidden 无效')
+    -   [IOS 那些坑](note/ios.md 'IOS 那些坑')
 -   新玩物
     -   [turbopack](newThings/turbopack.md 'turbopack')
 -   React
