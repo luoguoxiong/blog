@@ -4,7 +4,7 @@
 
 [状态管理的那些事](note/state.md '状态管理的那些事')、[热更新原理](note/hmr.md '热更新原理')、 [回收机制](note/gc.md '回收机制')、[requestIdleCallback实现](note/requestIdleCallback.md 'requestIdleCallback实现')、[typeScript 不常用的一些技巧](note/ts.md 'typeScript 不常用的一些技巧')
 
-[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 那些坑](note/ios.md 'IOS 那些坑')
+[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 那些坑](note/ios.md 'IOS 那些坑')、[CodeSplitting](note/codesplitting.md 'CodeSplitting')
 
 新玩物
 
