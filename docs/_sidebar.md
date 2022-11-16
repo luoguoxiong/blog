@@ -58,6 +58,7 @@
     -   [回流与重绘](performance/render.md '回流与重绘')
 -   Babel
     -   [关于 babel](babel/about.md '关于babel')
+    -   [babel 配置文件](babel/config.md 'babel 配置文件')
     -   [preset](babel/preset.md '统一preset')
 -   模块化
     -   [CommonJS](module/common.md 'CommonJS')
