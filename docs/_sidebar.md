@@ -10,6 +10,7 @@
     -   [nvm Node版本工具](note/nvm.md 'nvm Node版本工具')
     -   [IOS 那些坑](note/ios.md 'IOS 那些坑')
     -   [CodeSplitting](note/codesplitting.md 'CodeSplitting')
+    -   [Ios 调试H5](note/iosDebug.md 'Ios 调试H5')
 -   新玩物
     -   [turbopack](newThings/turbopack.md 'turbopack')
 -   React
@@ -59,7 +60,8 @@
 -   Babel
     -   [关于 babel](babel/about.md '关于babel')
     -   [babel 配置文件](babel/config.md 'babel 配置文件')
-    -   [preset](babel/preset.md '统一preset')
+    -   [babel 预设插件选择](babel/choose.md 'babel 预设插件选择')
+    -   [统一preset](babel/preset.md '统一preset')
 -   模块化
     -   [CommonJS](module/common.md 'CommonJS')
     -   [AMD](module/amd.md 'AMD')

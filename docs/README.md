@@ -4,7 +4,7 @@
 
 [状态管理的那些事](note/state.md '状态管理的那些事')、[热更新原理](note/hmr.md '热更新原理')、 [回收机制](note/gc.md '回收机制')、[requestIdleCallback实现](note/requestIdleCallback.md 'requestIdleCallback实现')、[typeScript 不常用的一些技巧](note/ts.md 'typeScript 不常用的一些技巧')
 
-[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 那些坑](note/ios.md 'IOS 那些坑')、[CodeSplitting](note/codesplitting.md 'CodeSplitting')
+[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 那些坑](note/ios.md 'IOS 那些坑')、[CodeSplitting](note/codesplitting.md 'CodeSplitting')、[Ios 调试H5](note/iosDebug.md 'Ios 调试H5')
 
 新玩物
 
@@ -40,7 +40,7 @@ JavaScript
 
 Babel
 
-[关于 babel](babel/about.md '关于babel')、[preset](babel/preset.md 'preset')
+[关于 babel](babel/about.md '关于babel')、[babel 配置文件](babel/config.md 'babel 配置文件')、[babel 预设插件选择](babel/choose.md 'babel 预设插件选择')、[统一preset](babel/preset.md '统一preset')
 
 性能优化
 
