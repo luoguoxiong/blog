@@ -8,7 +8,7 @@
 
 3. 找到 `Remote Target #LOCALHOST`，点击对应的网站的`inspect`
 
-## 微信内置浏览器
+## 微信内置浏览器 （要打开科学上网工具）
 
 1. 手机开启USB调试
 
