@@ -13,6 +13,7 @@
     -   [Ios 调试H5](note/iosDebug.md 'Ios 调试H5')
     -   [Android 调试H5](note/androidDebug.md 'Android 调试H5')
     -   [插件式设计](note/pluginDesign.md '插件式设计')
+    -   [Git revert 与 reset](note/git.md 'Git revert 与 reset')
 -   新玩物
     -   [turbopack](newThings/turbopack.md 'turbopack')
 -   React

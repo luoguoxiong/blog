@@ -6,6 +6,8 @@
 
 [nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 那些坑](note/ios.md 'IOS 那些坑')、[CodeSplitting](note/codesplitting.md 'CodeSplitting')、[Ios 调试H5](note/iosDebug.md 'Ios 调试H5')、[Android 调试H5](note/androidDebug.md 'Android 调试H5')、[插件式设计](note/pluginDesign.md '插件式设计')
 
+[Git revert 与 reset](note/git.md 'Git revert 与 reset')
+
 新玩物
 
 [turbopack](newThings/turbopack.md 'turbopack')
