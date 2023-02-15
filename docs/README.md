@@ -34,7 +34,7 @@ Vue
 
 CSS
 
-[前端的那些"KFC"布局](css/kfc.md '前端的那些"KFC"布局')
+[前端的那些"KFC"布局](css/kfc.md '前端的那些"KFC"布局')、[flex的一些属性](css/flex.md 'flex的一些属性')
 
 JavaScript
 

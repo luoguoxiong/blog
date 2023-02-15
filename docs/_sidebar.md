@@ -47,6 +47,7 @@
     -   [Schema 数据校验](engineering/schema.md 'Schema 数据校验')
 -   Css
     -   [前端的那些"KFC"布局](css/kfc.md '前端的那些"KFC"布局')
+    -   [flex的一些属性](css/flex.md 'flex的一些属性')
 -   JavaScript
     -   [页面生命周期](javaScript/lifeCycle.md '页面生命周期')
     -   [EventLoop](javaScript/eventLoop.md 'EventLoop')
