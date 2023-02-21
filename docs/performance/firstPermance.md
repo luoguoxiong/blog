@@ -37,7 +37,7 @@ function logFirstScreen(){
       curImg = curImg.offsetParent;
     }
 
-    if(document.documentElement.clientHeight < offsetTop){
+    if(document.documentElement.clientHeight < offset.top){
       continue;
     }
 
