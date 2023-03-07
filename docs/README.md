@@ -38,7 +38,7 @@ CSS
 
 JavaScript
 
-[页面生命周期](javaScript/lifeCycle.md '页面生命周期')、[EventLoop](javaScript/eventLoop.md 'EventLoop')、[数据劫持](javaScript/datahijack.md '数据劫持')、[javaScript标签加载机制](javaScript/jsLoad.md 'javaScript标签加载机制')、[JS 的那些度量](javaScript/meassure.md 'JS 的那些度量')、[原型链](javaScript/prototype.md '原型链')、  [setTimeout 与 setInterval 区别](javaScript/timer.md 'setTimeout 与 setInterval 区别')
+[页面生命周期](javaScript/lifeCycle.md '页面生命周期')、[EventLoop](javaScript/eventLoop.md 'EventLoop')、[数据劫持](javaScript/datahijack.md '数据劫持')、[javaScript标签加载机制](javaScript/jsLoad.md 'javaScript标签加载机制')、[JS 的那些度量](javaScript/meassure.md 'JS 的那些度量')、[原型链](javaScript/prototype.md '原型链')、  [setTimeout 与 setInterval 区别](javaScript/timer.md 'setTimeout 与 setInterval 区别')、[cookie](javaScript/cookie.md 'cookie')
 
 Babel
 
