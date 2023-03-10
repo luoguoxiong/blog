@@ -17,6 +17,7 @@
     -   [webpack按需加载原理](note/import.md 'webpack按需加载原理')
 -   新玩物
     -   [turbopack](newThings/turbopack.md 'turbopack')
+    -   [rspack](newThings/rspack.md 'rspack')
 -   React
     -   [Remax 实现原理](react/remax.md 'Remax实现原理')
     -   [Hooks 坑位告警](react/hooks.md 'Hooks 坑位告警')
