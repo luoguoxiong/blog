@@ -65,6 +65,7 @@
     -   [webpack优化性能](performance/webpackplugin.md 'webpack优化性能')
     -   [Proload/Prefetch](performance/proloadAndprefetch.md 'Proload/Prefetch')
     -   [回流与重绘](performance/render.md '回流与重绘')
+    -   [性能优化网络层](performance/network.md '性能优化网络层')
 -   Babel
     -   [关于 babel](babel/about.md '关于babel')
     -   [babel 配置文件](babel/config.md 'babel 配置文件')
