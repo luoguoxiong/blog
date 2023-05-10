@@ -10,7 +10,7 @@
 
 新玩物
 
-[turbopack](newThings/turbopack.md 'turbopack')、[rspack](newThings/rspack.md 'rspack')
+[turbopack](newThings/turbopack.md 'turbopack')、[rspack](newThings/rspack.md 'rspack')、[tauri](newThings/tauri.md 'tauri')
 
 React
 

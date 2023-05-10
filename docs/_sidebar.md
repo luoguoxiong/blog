@@ -18,6 +18,7 @@
 -   新玩物
     -   [turbopack](newThings/turbopack.md 'turbopack')
     -   [rspack](newThings/rspack.md 'rspack')
+    -   [tauri](newThings/tauri.md 'tauri')
 -   React
     -   [Remax 实现原理](react/remax.md 'Remax实现原理')
     -   [Hooks 坑位告警](react/hooks.md 'Hooks 坑位告警')
