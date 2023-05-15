@@ -59,6 +59,7 @@
     -   [原型链](javaScript/prototype.md '原型链')
     -   [setTimeout 与 setInterval 区别](javaScript/timer.md 'setTimeout 与 setInterval 区别')
     -   [cookie](javaScript/cookie.md 'cookie')
+    -   [二进制权限设计使用场景](javaScript/0b.md '二进制权限设计使用场景')
 -   性能优化
     -   [性能指标](performance/quota.md '性能指标')
     -   [指标采集](performance/collect.md '指标采集')
