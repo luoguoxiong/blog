@@ -4,9 +4,10 @@
 
 [状态管理的那些事](note/state.md '状态管理的那些事')、[热更新原理](note/hmr.md '热更新原理')、 [回收机制](note/gc.md '回收机制')、[requestIdleCallback实现](note/requestIdleCallback.md 'requestIdleCallback实现')、[typeScript 不常用的一些技巧](note/ts.md 'typeScript 不常用的一些技巧')、[webpack按需加载原理](note/import.md 'webpack按需加载原理')
 
-[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 那些坑](note/ios.md 'IOS 那些坑')、[CodeSplitting](note/codesplitting.md 'CodeSplitting')、[Ios 调试H5](note/iosDebug.md 'Ios 调试H5')、[Android 调试H5](note/androidDebug.md 'Android 调试H5')、[插件式设计](note/pluginDesign.md '插件式设计')
+[nvm Node版本工具](note/nvm.md 'nvm Node版本工具')、[IOS 那些坑](note/ios.md 'IOS 那些坑')、[CodeSplitting](note/codesplitting.md 'CodeSplitting')、[Ios 调试H5](note/iosDebug.md 'Ios 调试H5')、[Android 调试H5](note/androidDebug.md 'Android 调试H5')、[插件式设计](note/pluginDesign.md '插件式设计')、[Git revert 与 reset](note/git.md 'Git revert 与 reset')
 
-[Git revert 与 reset](note/git.md 'Git revert 与 reset')
+[OpenAi使用](note/ai.md 'OpenAi使用')
+
 
 新玩物
 

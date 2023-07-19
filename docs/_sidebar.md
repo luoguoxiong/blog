@@ -15,6 +15,7 @@
     -   [插件式设计](note/pluginDesign.md '插件式设计')
     -   [Git revert 与 reset](note/git.md 'Git revert 与 reset')
     -   [webpack按需加载原理](note/import.md 'webpack按需加载原理')
+    -   [OpenAi使用](note/ai.md 'OpenAi使用')
 -   新玩物
     -   [turbopack](newThings/turbopack.md 'turbopack')
     -   [rspack](newThings/rspack.md 'rspack')
