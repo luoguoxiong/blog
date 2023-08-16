@@ -47,7 +47,7 @@ Babel
 
 性能优化
 
-[性能指标](performance/quota.md '性能指标')、[指标采集](performance/collect.md '指标采集')、[首屏性能](performance/firstPermance.md '首屏性能')、[webpack优化性能](performance/webpackplugin.md 'webpack优化性能')、[Proload/Prefetch](performance/proloadAndprefetch.md 'Proload/Prefetch')、[回流与重绘](performance/render.md '回流与重绘')、[性能优化网络层](performance/network.md '性能优化网络层')
+[性能指标](performance/quota.md '性能指标')、[指标采集](performance/collect.md '指标采集')、[首屏性能](performance/firstPermance.md '首屏性能')、[webpack优化性能](performance/webpackplugin.md 'webpack优化性能')、[Proload/Prefetch](performance/proloadAndprefetch.md 'Proload/Prefetch')、[回流与重绘](performance/render.md '回流与重绘')、[性能优化网络层](performance/network.md '性能优化网络层')、[计算密集型任务](performance/work.md '计算密集型任务')
 
 模块化
 
@@ -71,7 +71,7 @@ Node
 
 设计模式
 
-[理解设计模式](design/concept.md '理解设计模式')、 [单例模式](design/singleton.md '单例模式')、[工厂模式](design/factory.md '工厂模式')、 [建造者模式](design/builder.md '建造者模式')、 [模板模式](design/template.md '模板模式')、[观察者与发布订阅模式](design/obverver.md '观察者与发布订阅模式')
+[理解设计模式](design/concept.md '理解设计模式')、 [单例模式](design/singleton.md '单例模式')、[工厂模式](design/factory.md '工厂模式')、 [建造者模式](design/builder.md '建造者模式')、 [模板模式](design/template.md '模板模式')、[观察者与发布订阅模式](design/obverver.md '观察者与发布订阅模式')、[代理模式](design/proxy.md '代理模式')
 
 算法与数据结构
 

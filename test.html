@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebXR 360 Image Player</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene vr-mode-ui="enabled: true">
+        <!-- 360度全景图像 -->
+        <a-sky src="path/to/360-image.jpg"></a-sky>
+
+        <!-- 环境 -->
+        <a-entity light="type: ambient; color: #FFF;"></a-entity>
+        <a-entity light="type: directional; color: #FFF; intensity: 0.5; castShadow: true;" position="-2 4 -1"></a-entity>
+        <a-entity light="type: directional; color: #FFF; intensity: 0.5; castShadow: true;" position="2 4 1"></a-entity>
+
+        <!-- 相机 -->
+        <a-entity camera position="0 1.6 0"></a-entity>
+    </a-scene>
+</body>
+</html>
