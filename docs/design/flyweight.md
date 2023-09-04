@@ -1,0 +1,63 @@
+# 享元模式
+
+如果系统中因为创建了大量类似的对象而导致内存占用过高，享元模式就非常有用了。在
+JavaScript 中，浏览器特别是移动端的浏览器分配的内存并不算多，如何节省内存就成了一件非
+常有意义的事情。
+
+## 认识享元模式
+假设有个内衣工厂，目前的产品有 50 种男式内衣和 50 种女士内衣，为了推销产品，工厂决
+定生产一些塑料模特来穿上他们的内衣拍成广告照片。 正常情况下需要 50 个男模特和 50 个女
+模特，然后让他们每人分别穿上一件内衣来拍照。不使用享元模式的情况下，在程序里也许会这
+样写：
+```js
+var Model = function( sex, underwear){ 
+ this.sex = sex; 
+ this.underwear= underwear; 
+}; 
+Model.prototype.takePhoto = function(){ 
+ console.log( 'sex= ' + this.sex + ' underwear=' + this.underwear); 
+}; 
+for ( var i = 1; i <= 50; i++ ){ 
+ var maleModel = new Model( 'male', 'underwear' + i ); 
+ maleModel.takePhoto(); 
+}; 
+for ( var j = 1; j <= 50; j++ ){
+  var femaleModel= new Model( 'female', 'underwear' + j ); 
+  femaleModel.takePhoto(); 
+};
+```
+要得到一张照片，每次都需要传入 sex 和 underwear 参数，如上所述，现在一共有 50 种男内
+衣和 50 种女内衣，所以一共会产生 100 个对象。如果将来生产了 10000 种内衣，那这个程序可
+能会因为存在如此多的对象已经提前崩溃。
+下面我们来考虑一下如何优化这个场景。虽然有 100 种内衣，但很显然并不需要 50 个男
+模特和 50 个女模特。其实男模特和女模特各自有一个就足够了，他们可以分别穿上不同的内
+衣来拍照。
+现在来改写一下代码，既然只需要区别男女模特，那我们先把 underwear 参数从构造函数中
+移除，构造函数只接收 sex 参数：
+
+```js
+var Model = function( sex ){ 
+ this.sex = sex; 
+}; 
+Model.prototype.takePhoto = function(){ 
+ console.log( 'sex= ' + this.sex + ' underwear=' + this.underwear); 
+};
+var maleModel = new Model( 'male' ), 
+ femaleModel = new Model( 'female' );
+for ( var i = 1; i <= 50; i++ ){ 
+ maleModel.underwear = 'underwear' + i; 
+ maleModel.takePhoto(); 
+};
+for ( var j = 1; j <= 50; j++ ){ 
+ femaleModel.underwear = 'underwear' + j; 
+ femaleModel.takePhoto(); 
+};
+```
+## 内部状态和外部状态
+1. 内部状态存储于对象内部。
+2. 内部状态可以被一些对象共享。 
+3. 内部状态独立于具体的场景，通常不会改变。
+4. 外部状态取决于具体的场景，并根据场景而变化，外部状态不能被共享。
+
+## 享元模式使用场景
+享元模式要求将对象的属性划分为内部状态与外部状态（状态在这里通常指属性）。享元模式的目标是尽量减少共享对象的数量。

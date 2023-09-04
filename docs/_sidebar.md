@@ -107,6 +107,7 @@
     -   [模板模式](design/template.md '模板模式')
     -   [观察者与发布订阅模式](design/obverver.md '观察者与发布订阅模式')
     -   [代理模式](design/proxy.md '代理模式')
+    -   [享元模式](design/flyweight.md '享元模式')
 -   算法与数据结构
     -   [时间和空间复杂度](algorithm/about.md '时间和空间复杂度')
     -   [二叉树遍历](algorithm/binaryTree.md '二叉树遍历')
