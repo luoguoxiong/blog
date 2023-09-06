@@ -89,6 +89,53 @@ for ( var j = 1; j <= 50; j++ ){
 总之，享元模式适用于需要大量对象共享相同状态的情况，以提高内存使用效率和性能。但在使用时需要注意管理共享对象的复杂性，确保外部状态传递正确。
 
 
+## 图形Demo
+```ts
+interface Shape {
+  draw(color: string, x: number, y: number): void;
+}
 
+class Circle implements Shape {
+  draw(color: string, x: number, y: number): void {
+    console.log(`Drawing a ${color} circle at (${x}, ${y})`);
+  }
+}
 
+class Rectangle implements Shape {
+  draw(color: string, x: number, y: number): void {
+    console.log(`Drawing a ${color} rectangle at (${x}, ${y})`);
+  }
+}
+class ShapeFactory {
+  private shapes: { [key: string]: Shape } = {};
 
+  getShape(shapeType: string): Shape {
+    if (!this.shapes[shapeType]) {
+      // 如果图形元素不存在，则创建并存储在池中
+      switch (shapeType) {
+        case "circle":
+          this.shapes[shapeType] = new Circle();
+          break;
+        case "rectangle":
+          this.shapes[shapeType] = new Rectangle();
+          break;
+        default:
+          throw new Error(`Unknown shape type: ${shapeType}`);
+      }
+    }
+    return this.shapes[shapeType];
+  }
+}
+
+const factory = new ShapeFactory();
+
+// 绘制多个红色圆形
+for (let i = 0; i < 5; i++) {
+  const shape = factory.getShape("circle");
+  shape.draw("red", i * 20, 30);
+}
+
+// 绘制绿色矩形
+const shape = factory.getShape("rectangle");
+shape.draw("green", 50, 50);
+```
